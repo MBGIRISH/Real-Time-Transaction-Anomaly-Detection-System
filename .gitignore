@@ -24,10 +24,12 @@ ENV/
 .DS_Store
 Thumbs.db
 
-# Data (if large)
-# Uncomment if you don't want to commit data files
-# data/*.csv
-# data/*.zip
+# Data (large files - excluded from Git)
+# GitHub has a 100MB file size limit, so large datasets should not be committed
+data/*.csv
+data/*.zip
+data/*.pkl
+data/*.h5
 
 # Logs
 *.log

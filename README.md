@@ -40,6 +40,23 @@ This project implements a comprehensive fraud detection system that addresses cr
 - 31 features (Time, Amount, V1-V28 PCA components, Class)
 - Fraud rate: 0.172% (492 fraud cases)
 
+### Downloading the Dataset
+
+The dataset is too large to include in this repository (GitHub's 100MB file limit). Please download it manually:
+
+1. **Option 1: From Kaggle** (Recommended)
+   ```bash
+   # Download from: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+   # Place the file as: data/creditcard.csv
+   ```
+
+2. **Option 2: Direct Download**
+   - Visit: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+   - Download `creditcard.csv`
+   - Place it in the `data/` directory
+
+**Note**: The dataset file should be named `creditcard.csv` and placed in the `data/` folder for the notebook to run correctly.
+
 ## Quick Start
 
 ### Prerequisites
