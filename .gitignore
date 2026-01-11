@@ -33,3 +33,6 @@ data/*.h5
 
 # Logs
 *.log
+
+# Screenshots in data folder
+data/*.png
