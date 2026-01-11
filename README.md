@@ -10,7 +10,7 @@ Success is defined by achieving high fraud detection rates (recall > 80%) at low
 
 Develop a production-grade machine learning system that can:
 - Detect fraudulent transactions in highly imbalanced data (fraud rate < 0.2%)
-- Provide real-time predictions with sub-100ms latency
+- Provide real-time predictions with sub-100ms latency (latency estimates are based on offline inference benchmarks; production deployment would require a dedicated inference service)
 - Balance false positives (customer friction) and false negatives (financial loss)
 - Deliver explainable predictions for regulatory compliance and manual review
 
@@ -32,7 +32,7 @@ Constraints include maintaining model interpretability for regulatory requiremen
   - Class: Binary target (0 = normal, 1 = fraud)
 
 **Data Preprocessing:**
-- Handled missing values in rolling window features using forward-fill and backward-fill
+- Handled missing values in rolling window features using forward-fill and backward-fill (applied only to engineered rolling features, not raw transaction attributes)
 - Applied RobustScaler to handle outliers and scale features
 - Stratified train/validation/test split (70/15/15) to maintain class distribution
 - Removed infinite values introduced during feature engineering
@@ -119,7 +119,7 @@ Accuracy is misleading for imbalanced data. A model predicting "no fraud" for al
 ## Business / Real-World Impact
 
 **Production Deployment:**
-The system can be integrated into real-time transaction processing pipelines, scoring transactions within 100ms to enable automated decision-making. High-risk transactions (above threshold) are automatically blocked or flagged for manual review, while low-risk transactions proceed normally.
+The system can be integrated into real-time transaction processing pipelines, scoring transactions within 100ms to enable automated decision-making (latency estimates are based on offline inference benchmarks; production deployment would require a dedicated inference service). High-risk transactions (above threshold) are automatically blocked or flagged for manual review, while low-risk transactions proceed normally.
 
 **Stakeholders:**
 - **Financial Institutions:** Reduce fraud losses by 80%+ while maintaining customer satisfaction
@@ -130,7 +130,7 @@ The system can be integrated into real-time transaction processing pipelines, sc
 **Decision Support:**
 - Automated blocking of high-confidence fraud cases (risk score > 0.9)
 - Tiered alerting system: High-risk (immediate review), Medium-risk (batch review), Low-risk (monitoring)
-- Cost-optimized threshold selection balancing fraud prevention costs and customer friction
+- Cost-optimized threshold selection balancing fraud prevention costs and customer friction (thresholds can be optimized using a cost matrix, e.g., $500 loss per false negative vs $5 per false positive)
 - Real-time risk scoring enables dynamic transaction limits and additional authentication
 
 ## Project Structure
@@ -252,4 +252,3 @@ Real-Time-Transaction-Anomaly-Detection-System/
 **Author:**
 - **M B Girish**
 - Email: mbgirish2004@gmail.com
-- Phone: +91 7483091191
